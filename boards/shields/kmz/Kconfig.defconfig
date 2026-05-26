@@ -1,0 +1,6 @@
+if SHIELD_KMZ
+
+config ZMK_KEYBOARD_NAME
+    default "kmz"
+
+endif # SHIELD_KMZ
