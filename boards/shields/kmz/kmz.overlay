@@ -10,34 +10,38 @@
     kscan0: kscan_0 {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
-        diode-direction = "row2col";
+        
+        /* Changed to col2row to match your physical diode direction */
+        diode-direction = "col2row"; 
 
+        /* In col2row, Rows are inputs and need the PULL_DOWN resistors */
         row-gpios
-            = <&gpio1 15 GPIO_ACTIVE_HIGH> // ROW0
-            , <&gpio0 3  GPIO_ACTIVE_HIGH> // ROW1
-            , <&gpio0 2  GPIO_ACTIVE_HIGH> // ROW2
-            , <&gpio0 28 GPIO_ACTIVE_HIGH> // ROW3
-            , <&gpio0 29 GPIO_ACTIVE_HIGH> // ROW4
-            , <&gpio0 30 GPIO_ACTIVE_HIGH> // ROW5
+            = <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW0
+            , <&gpio0 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW1
+            , <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW2
+            , <&gpio0 28 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW3
+            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW4
+            , <&gpio0 30 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW5
             ;
 
+        /* Columns are outputs and are set to ACTIVE_HIGH */
         col-gpios
-            = <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL0
-            , <&gpio0 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL1
-            , <&gpio0 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL2
-            , <&gpio0 27 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL3
-            , <&gpio1 8  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL4
-            , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL5
-            , <&gpio0 25 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL6
-            , <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL7
-            , <&gpio1 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL8
-            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL9
-            , <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL10
-            , <&gpio0 17 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL11
-            , <&gpio0 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL12
-            , <&gpio0 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL13
-            , <&gpio0 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL14
-            , <&gpio0 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL15
+            = <&gpio0 26 GPIO_ACTIVE_HIGH> // COL0
+            , <&gpio0 6  GPIO_ACTIVE_HIGH> // COL1
+            , <&gpio0 8  GPIO_ACTIVE_HIGH> // COL2
+            , <&gpio0 27 GPIO_ACTIVE_HIGH> // COL3
+            , <&gpio1 8  GPIO_ACTIVE_HIGH> // COL4
+            , <&gpio0 11 GPIO_ACTIVE_HIGH> // COL5
+            , <&gpio0 25 GPIO_ACTIVE_HIGH> // COL6
+            , <&gpio1 12 GPIO_ACTIVE_HIGH> // COL7
+            , <&gpio1 14 GPIO_ACTIVE_HIGH> // COL8
+            , <&gpio0 24 GPIO_ACTIVE_HIGH> // COL9
+            , <&gpio0 20 GPIO_ACTIVE_HIGH> // COL10
+            , <&gpio0 17 GPIO_ACTIVE_HIGH> // COL11
+            , <&gpio0 15 GPIO_ACTIVE_HIGH> // COL12
+            , <&gpio0 14 GPIO_ACTIVE_HIGH> // COL13
+            , <&gpio0 13 GPIO_ACTIVE_HIGH> // COL14
+            , <&gpio0 16 GPIO_ACTIVE_HIGH> // COL15
             ;
     };
 
